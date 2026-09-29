@@ -33,6 +33,105 @@ And if we put the matrix second we call it post mutliplying
  ```math
 \begin{pmatrix} x & y \end{pmatrix} \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{pmatrix} = \begin{pmatrix} x \cdot \cos\theta + y \cdot -\sin\theta & x \cdot \sin\theta + y \cdot \cos\theta \end{pmatrix} 
 ```
+Again correct accrding to the above.  We can see, and this holds in general, that if we Post multiply, i.e. point on left, matrix on right, the the point is written as a row vector. Conversely, in pre-multiplication, i.e. matrix on left and point on right, the point is writtenn as a column vector.
+
+It is also the case that if you want to convert from one system to the other then the matrices will be the "Transpose" of each other, which means the row of one will be the correspondiong column of the other.
+
+
+## 🔄 Matrix Transposes & Converting Multiplication Orders
+
+When working across different game engines or shader languages, you will encounter two different ways to multiply matrices and vectors: **Pre-multiplication** (Unity / column vectors) and **Post-multiplication** (Unreal Engine / row vectors). 
+
+To convert an equation from one system to the other without changing the physical transformation result, we use the algebraic property of the **Matrix Transpose** ($M^T$), which flips a matrix over its diagonal (swapping its rows and columns).
+
+
+### 📐 What is a Matrix Transpose? (A Simple Example)
+
+The **transpose** of a matrix is simply a flipped version of the original matrix. You create it by swapping its **rows** with its **columns**. 
+
+Think of it like spinning the matrix along its top-left-to-bottom-right diagonal axis:
+*   Row 1 becomes **Column 1**
+*   Row 2 becomes **Column 2**
+*   Row 3 becomes **Column 3**
+
+We write the transpose of Matrix $M$ as **$M^T$**.
+
+#### A 2D Transformation Example
+
+Let's look at a basic $2 \times 2$ transformation matrix ($M$) containing simple numbers:
+
+$$
+M = \begin{pmatrix} 
+{\color{red}1} & {\color{red}2} \\ 
+{\color{blue}3} & {\color{blue}4} 
+\end{pmatrix}
+$$
+
+To find the transpose ($M^T$), we take the first horizontal row $(\color{red}{1, 2})$ and write it as a vertical column. Then we take the second horizontal row $(\color{blue}{3, 4})$ and write it as the second vertical column:
+
+$$
+M^{T} = \begin{pmatrix} 
+{\color{red}1} & {\color{blue}3}  \\ 
+ {\color{red}2} & {\color{blue}4} 
+\end{pmatrix}
+$$
+
+Notice that the numbers along the main diagonal ($1$ and $4$) stayed exactly where they were, while the off-diagonal numbers ($2$ and $3$) swapped positions.
+
+#### Visualizing Vectors
+
+This same flipping rule applies to coordinate vectors when converting between multiplication styles:
+
+* A vertical **Column Vector** ($v$):
+
+$$ v = \begin{pmatrix} x \\\\ y \end{pmatrix} $$
+
+* Transposing it ($v^T$) turns it into a horizontal **Row Vector**:
+
+$$ v^T = \begin{pmatrix} x & y \end{pmatrix} $$
+
+
+
+
+
+
+### The Mathematical Rule
+
+In linear algebra, the transpose of a matrix multiplication reverses the order of the individual parts:
+
+$$ (A \cdot B)^T = B^T \cdot A^T $$
+
+Applying this directly to a transformation vector ($v$) and a transformation matrix ($M$), we can swap between conventions cleanly.
+
+---
+
+### Converting Pre-Multiply to Post-Multiply
+
+#### 1. Pre-Multiplication (Unity Standard)
+The matrix stands **before** (to the left of) the vector. The vector is treated as a vertical **column vector**:
+
+$$ v' = M \cdot v $$
+
+#### 2. Converting to Post-Multiplication
+If we transpose both sides of the Unity equation to turn our column vector into a horizontal **row vector**, the order flips automatically:
+
+$$ (v')^T = (M \cdot v)^T $$
+
+$$ v'^T = v^T \cdot M^T $$
+
+In the final post-multiplied version, the vector now stands **after** (to the right of) the transposed matrix.
+
+---
+
+### Summary Comparison Matrix
+
+| System | Layout Structure | Vector Type | Used By |
+| :--- | :--- | :--- | :--- |
+| **Pre-Multiply** | $M \cdot v$ | Column Vector | **Unity**, OpenGL, Shaders (GLSL/HLSL) |
+| **Post-Multiply**| $v^T \cdot M^T$ | Row Vector | **Unreal Engine**, Direct3D, Maya |
+
+> ⚠️ **Key Takeaway for Shaders:** If you copy a shader math function written for Unreal Engine into a Unity custom shader, your matrix multiplications will evaluate backwards unless you **transpose the matrix** ($M^T$) and flip the vector to the left side ($v \cdot M$).
+
 
 
 We have seen that rotation by $\theta$ degrees can be represented by 
