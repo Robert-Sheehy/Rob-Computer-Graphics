@@ -13,12 +13,26 @@ So $(1,0) \to (cos \theta , sin \theta )$  and $(0,1) \to (-sin\theta , cos \the
 
 This leads to the natural transformation of the point 
 
-$(x,y) = x*(1,0) + y*(0,1) \to x*(cos \theta , sin \theta ) + y*(-sin\theta , cos \theta)$
+$(x,y) = x(1,0) + y(0,1) \to x(\cos\theta, \sin\theta) + y(-\sin\theta, \cos\theta)$
 
-which means  
+which means
 
-$(x,y) \to $ (x*cos\theta$ + y*-sin\theta , x*sin \theta + ycos \theta)$
+$(x,y) \to (x\cos\theta - y\sin\theta, x\sin\theta + y\cos\theta)$
 
+ Out of this transformation matrix multiplication was born, and this can be done in 2 different ways, depending on whether the matrix representing the transformation is before the point(s) to be trannsformed or after.
+
+If we put the matrix first (Pre-multiply) then the point will be on the right
+```math
+\begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} \cos\theta \cdot x -\sin\theta \cdot y \\ \sin\theta \cdot x + \cos\theta \cdot y \end{pmatrix} 
+```
+
+Which is correct according to above..
+
+And if we put the matrix second we call it post mutliplying 
+
+ ```math
+\begin{pmatrix} x & y \end{pmatrix} \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{pmatrix} = \begin{pmatrix} x \cdot \cos\theta + y \cdot -\sin\theta & x \cdot \sin\theta + y \cdot \cos\theta \end{pmatrix} 
+```
 
 
 We have seen that rotation by $\theta$ degrees can be represented by 
