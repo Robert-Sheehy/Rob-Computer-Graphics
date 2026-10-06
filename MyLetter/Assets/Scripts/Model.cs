@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Model
 {
-    List<Vector3Int>  faces = new List<Vector3Int>();
-    List<Vector3> vertices =  new List<Vector3>();
+    internal List<Vector3Int>  faces = new List<Vector3Int>();
+    internal List<Vector3> vertices =  new List<Vector3>();
 
 
     public Model()
