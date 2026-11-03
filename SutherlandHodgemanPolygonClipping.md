@@ -24,3 +24,5 @@ For a given line segment $v_{i}$ to $v_{i+1}$ clipped against a viewport edge
 | In to Out | $v_{i}, v_{i+1}^{*}$ |
 | Out to In | $v_{i}^{*}$ |
 | Out to Out |  $\null$ |
+
+where $v^{*}$ represents the intersection of the line segment with the given edge, and that the point $v$ is the one clipped.
