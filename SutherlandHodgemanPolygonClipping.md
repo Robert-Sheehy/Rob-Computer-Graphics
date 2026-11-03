@@ -68,12 +68,25 @@ Passing on to next edge and renaming a vertices 0,1,2,3,4
 |2-3 | In - In | 2 |
 |3-4 | In - Out | 3, $4^{*}$ |
 |4-0 | Out - In | $4^{@}$ |
-
+| :--- | :--- | :--- |
 
 New Polygon 0,1,2,3,$4^{*}, 4^{@}$
 <img width="565" height="386" alt="image" src="https://github.com/user-attachments/assets/66d6a3fd-a7da-4bc4-8f40-08cc8b9f8e7c" />
 
 Finally list re-indexed and passed to last edge.
+
+| Line Segment| Type | Output |
+| :--- | :--- | :--- |
+|0-1 | In - Out | 0, 1* |
+|1-2 | Out - In | 1@ |
+|2-3 | In - In | 2 |
+|3-4 | In - in | 3|
+|4-5 | In - In | 4|
+|5-0 | in - In | 5 |
+| :--- | :--- | :--- |
+
+<img width="570" height="371" alt="image" src="https://github.com/user-attachments/assets/737e8bfb-7c5c-4cfe-a0f6-480b27ed04fb" />
+
 
 
 
