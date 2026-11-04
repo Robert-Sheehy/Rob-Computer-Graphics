@@ -9,5 +9,5 @@ Taking the easier ones first, if we wished to find tyhe intersection of this lin
 
 So  $y - y_{0} = m(x - x_{0})$  or  $y  =  y_{0} + m(x - x_{0})$ 
 
-Left Intersection will be $ (-1,  y_{0} + m(-1 - x_{0})$ 
+Left Intersection will be $(-1,  y_{0} + m(-1 - x_{0})$ 
 
