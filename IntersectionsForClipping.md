@@ -15,6 +15,8 @@ Right Intersection will be $(1,  y_{0} + m(1 - x_{0})$
 
 So for the top and the bottom edges we solve the equation of the line for $x$
 
+So $x= x_{0} + \frac{1}{m} ( y - y_{0} )$
+
 
 
 
