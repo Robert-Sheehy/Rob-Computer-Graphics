@@ -17,6 +17,8 @@ So for the top and the bottom edges we solve the equation of the line for $x$
 
 So $x= x_{0} + \frac{1}{m} ( y - y_{0} )$
 
+Top Intersection will be $(x_{0} + \frac{1}{m} ( 1 - y_{0} ), 1 )$
 
+Bottom Intersection will be  $(x_{0} + \frac{1}{m} ( -1 - y_{0} ), 1 )$
 
 
