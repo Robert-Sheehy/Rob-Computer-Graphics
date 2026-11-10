@@ -29,10 +29,48 @@ The equation of the line formula is $y - y_1 = m(x - x_1)$ where the slope $m = 
 
 The slope is calculated as $m = \frac{e_y - s_y}{e_x - s_x}$
 
-So our equation of the line will be $y - s_y = m (x - s_x)$ which gives   $y = s_y + m (x - s_x)$
+So our equation of the line will be $y - s_y = m (x - s_x)$ which gives   $y = s_y + m (x - s_x)$  or $y = mx + s_y - ms_x$
 
-To calculate any  $y_i$ for any $x_i$    
+To calculate any  $y_i$ for any $x_i$ we must evaluate $y_i = m * x_i +(s_y - ms_x)$. This requires a floating point multiplication and addition for each point, along with the added overhead of calculating the slope.
+
+
 ### Digital Differential Algorithm   (DDA)
 
 ### Breshenham Line Rasterisation
+
+This algorithm breaks the whole process into a yes or no question,
+
+<img width="268" height="248" alt="image" src="https://github.com/user-attachments/assets/08611f77-90bc-480f-a9a9-a770d8c65729" />
+
+Should y increase or remain the same? The answer will depend on a decision parameter $p$, in particular if $p$ is positive or not.
+
+As before, the problem will be defined in terms of the end points of a line segment  $s = (s_x, s_y)$ and $e = (e_x, e_y)$
+
+The following are calculated:
+
+$dx = e_x - s_x$
+
+$dy = e_y - s_y$
+
+$D = dy - dx \le 0$
+
+$N = 2D  \le 0 $, where we call $N$ the negative adjustment.
+
+$P = 2dy  /ge 0$, where we call $P$ the positive adjustment
+
+$p_0 = 2dy - dx$  is the initial decision parameter, got by effectively saying go up with first is slope is greater than 0.5
+
+
+<img width="518" height="355" alt="image" src="https://github.com/user-attachments/assets/5774410e-0415-4448-acef-bee1675ada68" />
+
+Set $x_0 = s_x$ and $y_0 = s_y$
+
+When determining the next set of values, we must use the following rules
+
+$x_{i+1} = x_i +1$  i.e. increase $x$ by 1 everytime until you get to $x_i = e_x$
+
+if $p \le 0$ then leave $y$ alone and add the positive adjustment to $p$.
+otherwise $p > 0$ we increase $y$ and add the negative adjustment to $p$.
+
+
 
