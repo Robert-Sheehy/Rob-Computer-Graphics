@@ -19,3 +19,20 @@ These assume a screen resulution of $(Res_x, Res_y)$ and that the origin of the 
 
 Round $(\frac{(x+1)}2 (Res_x - 1))$  similarly for $y$  Round $(\frac{(1-y)}2 (Res_y - 1))$
 
+##Line Rasterisation
+
+The problem will always be phrased in terms of the end points of a line segment  $s = (s_x, s_y)$ and $e = (e_x, e_y)$
+
+### Equation of the line Method
+
+The equation of the line formula is $y - y_1 = m(x - x_1)$ where the slope $m = \frac{y_2 - y_1}{x_2 - x_1}$
+
+The slope is calculated as $m = \frac{e_y - s_y}{e_x - s_x}$
+
+So our equation of the line will be $y - s_y = m (x - s_x)$ which gives   $y = s_y + m (x - s_x)$
+
+To calculate any  $y_i$ for any $x_i$    
+### Digital Differential Algorithm   (DDA)
+
+### Breshenham Line Rasterisation
+
